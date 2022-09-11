@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Models\User;
+use App\Services\PaymentGateway;
 
 class AuthController extends Controller
 {
@@ -24,9 +25,20 @@ class AuthController extends Controller
 
     public function processRegister(RegisterRequest $request)
     {
-        auth()->login(
-            User::create($request->all())
+        $customer = PaymentGateway::createCustomer(
+            $request->get('name'),
+            $request->get('email'),
+            $request->get('phone')
         );
+        $order = PaymentGateway::createOrder();
+
+        $user = User::create($request->all());
+        $user->razorpay()->create([
+            'customer' => $customer->id,
+            'order' => $order->id
+        ]);
+
+        auth()->login($user);
 
         return auth()->user();
     }
