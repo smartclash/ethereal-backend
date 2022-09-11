@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('college');
             $table->string('course');
+            $table->string('code')->nullable();
             $table->unsignedBigInteger('passing');
             $table->timestamps();
         });

@@ -10,6 +10,7 @@ class UserDetail extends Model
     use HasFactory;
 
     protected $fillable = [
+        'code',
         'college',
         'course',
         'passing'
