@@ -8,6 +8,11 @@ use App\Services\PaymentGateway;
 
 class AuthController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
     public function choose()
     {
         return view('auth.choose');
@@ -32,7 +37,10 @@ class AuthController extends Controller
         );
         $order = PaymentGateway::createOrder();
 
-        $user = User::create($request->all());
+        $user = User::create([
+            'password' => \Hash::make($request->get('password')),
+            ...$request->only(['name', 'email', 'phone'])
+        ]);
         $user->razorpay()->create([
             'customer' => $customer->id,
             'order' => $order->id
