@@ -21,5 +21,7 @@ class UserDetailsController extends Controller
         auth()->user()->details()->create(
             $request->all()
         );
+
+        return redirect()->route('payment.show');
     }
 }
