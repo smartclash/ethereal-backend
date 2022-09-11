@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\DetailsMiddleware;
+use App\Http\Middleware\PaidMiddleware;
 use App\Http\Middleware\PaymentMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -67,5 +68,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'details' => DetailsMiddleware::class,
         'payment' => PaymentMiddleware::class,
+        'paid' => PaidMiddleware::class,
     ];
 }

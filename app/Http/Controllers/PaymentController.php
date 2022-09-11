@@ -35,8 +35,8 @@ class PaymentController extends Controller
                 'code' => \Str::random(6)
             ]);
 
-            //todo: redirect to dashboard
             \DB::commit();
+            return redirect()->route('dashboard.show');
         } catch (\Throwable $e) {
             \DB::rollBack();
             return redirect()->route('payment.show');

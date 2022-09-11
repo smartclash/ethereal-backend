@@ -1,7 +1,7 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="container">
         <div class="navbar-brand">
-            <a class="navbar-item" href="https://kcgethereal.com/">
+            <a class="navbar-item" href="{{ url('/') }}">
                 <img src="https://bulma.io/images/bulma-logo.png" alt="Ethereal, a silver jubilee cultural event at KCG College of Technology" width="112" height="28">
             </a>
 
@@ -13,9 +13,16 @@
         </div>
         <div class="navbar-menu" id="navMenu">
             <div class="navbar-end">
-                <a class="navbar-item">
+                <a class="navbar-item" href="{{ route('dashboard.show') }}">
                     Dashboard
                 </a>
+                @auth
+                    <a class="navbar-item" href="{{ route('auth.logout') }}">
+                        <button
+                            class="button is-danger is-outlined"
+                        >Logout</button>
+                    </a>
+                @endauth
             </div>
         </div>
     </div>

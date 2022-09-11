@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\AuthController::class, 'choose'])->name('auth.choose');
 Route::get('login', [\App\Http\Controllers\AuthController::class, 'login'])->name('auth.login');
 Route::get('register', [\App\Http\Controllers\AuthController::class, 'register'])->name('auth.register');
+Route::get('logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('auth.logout');
 
 Route::post('register', [\App\Http\Controllers\AuthController::class, 'processRegister']);
 
@@ -25,3 +26,5 @@ Route::post('detail', [\App\Http\Controllers\UserDetailsController::class, 'proc
 Route::get('payment', [\App\Http\Controllers\PaymentController::class, 'show'])->name('payment.show');
 Route::post('payment/callback', [\App\Http\Controllers\PaymentController::class, 'callback'])
     ->name('payment.callback');
+
+Route::get('dashboard', [\App\Http\Controllers\DashboardController::class, 'show'])->name('dashboard.show');

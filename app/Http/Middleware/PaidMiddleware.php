@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class PaymentMiddleware
+class PaidMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,14 +16,10 @@ class PaymentMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!auth()->user()->details->exists()) {
-            return redirect()->route('details.form');
-        }
-
         if (auth()->user()->razorpay->paid) {
-            return redirect()->route('dashboard.show');
+            return $next($request);
         }
 
-        return $next($request);
+        return redirect()->route('payment.show');
     }
 }

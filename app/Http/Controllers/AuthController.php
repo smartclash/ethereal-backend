@@ -10,7 +10,8 @@ class AuthController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest')->except('logout');
+        $this->middleware('auth')->only('logout');
     }
 
     public function choose()
@@ -49,5 +50,12 @@ class AuthController extends Controller
         auth()->login($user);
 
         return redirect()->route('details.form');
+    }
+
+    public function logout()
+    {
+        auth()->logout();
+
+        return redirect()->route('auth.choose');
     }
 }
