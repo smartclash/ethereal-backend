@@ -19,8 +19,13 @@ class PaymentGateway
     {
         return app(Api::class)->order->create([
             'receipt' => \Str::uuid(),
-            'amount' => 25000,
+            'amount' => 25500,
             'currency' => 'INR',
         ]);
+    }
+
+    public static function verifyPayment($data)
+    {
+        return app(Api::class)->utility->verifyPaymentSignature($data);
     }
 }

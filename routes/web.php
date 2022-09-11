@@ -21,3 +21,7 @@ Route::post('register', [\App\Http\Controllers\AuthController::class, 'processRe
 
 Route::get('detail', [\App\Http\Controllers\UserDetailsController::class, 'showForm'])->name('details.form');
 Route::post('detail', [\App\Http\Controllers\UserDetailsController::class, 'process']);
+
+Route::get('payment', [\App\Http\Controllers\PaymentController::class, 'show'])->name('payment.show');
+Route::post('payment/callback', [\App\Http\Controllers\PaymentController::class, 'callback'])
+    ->name('payment.callback');
