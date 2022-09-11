@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Razorpay::class);
     }
+
+    public function details()
+    {
+        return $this->hasOne(UserDetail::class);
+    }
 }

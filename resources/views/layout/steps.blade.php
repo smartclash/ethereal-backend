@@ -8,7 +8,10 @@
             <p class="is-size-5">Account</p>
         </div>
     </li>
-    <li class="steps-segment">
+    <li @class([
+        'steps-segment',
+        'is-active' => Route::is('details.form')
+    ])>
         <span class="steps-marker"></span>
         <div class="steps-content">
             <p class="is-size-5">Information</p>

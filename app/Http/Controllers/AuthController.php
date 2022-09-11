@@ -48,6 +48,6 @@ class AuthController extends Controller
 
         auth()->login($user);
 
-        return auth()->user();
+        return redirect()->route('details.form');
     }
 }

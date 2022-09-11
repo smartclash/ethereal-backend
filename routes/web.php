@@ -18,3 +18,6 @@ Route::get('login', [\App\Http\Controllers\AuthController::class, 'login'])->nam
 Route::get('register', [\App\Http\Controllers\AuthController::class, 'register'])->name('auth.register');
 
 Route::post('register', [\App\Http\Controllers\AuthController::class, 'processRegister']);
+
+Route::get('detail', [\App\Http\Controllers\UserDetailsController::class, 'showForm'])->name('details.form');
+Route::post('detail', [\App\Http\Controllers\UserDetailsController::class, 'process']);
