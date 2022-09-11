@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Auth\RegisterRequest;
+use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use App\Services\PaymentGateway;
 
@@ -50,6 +51,22 @@ class AuthController extends Controller
         auth()->login($user);
 
         return redirect()->route('details.form');
+    }
+
+    public function processLogin(LoginRequest $request)
+    {
+        $attempt = \Auth::attempt([
+            'email' => $request->get('email'),
+            'password' => $request->get('password')
+        ]);
+
+        if ($attempt) {
+            return redirect()->route('dashboard.show');
+        }
+
+        return redirect()->route('auth.login')->withErrors([
+            'password' => 'The password you entered was wrong'
+        ]);
     }
 
     public function logout()

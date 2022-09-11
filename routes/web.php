@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\UserDetailsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,18 +17,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\AuthController::class, 'choose'])->name('auth.choose');
-Route::get('login', [\App\Http\Controllers\AuthController::class, 'login'])->name('auth.login');
-Route::get('register', [\App\Http\Controllers\AuthController::class, 'register'])->name('auth.register');
-Route::get('logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('auth.logout');
+Route::get('/', [AuthController::class, 'choose'])->name('auth.choose');
+Route::get('login', [AuthController::class, 'login'])->name('auth.login');
+Route::get('register', [AuthController::class, 'register'])->name('auth.register');
+Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
 
-Route::post('register', [\App\Http\Controllers\AuthController::class, 'processRegister']);
+Route::post('register', [AuthController::class, 'processRegister']);
+Route::post('login', [AuthController::class, 'processLogin']);
 
-Route::get('detail', [\App\Http\Controllers\UserDetailsController::class, 'showForm'])->name('details.form');
-Route::post('detail', [\App\Http\Controllers\UserDetailsController::class, 'process']);
+Route::get('detail', [UserDetailsController::class, 'showForm'])->name('details.form');
+Route::post('detail', [UserDetailsController::class, 'process']);
 
-Route::get('payment', [\App\Http\Controllers\PaymentController::class, 'show'])->name('payment.show');
-Route::post('payment/callback', [\App\Http\Controllers\PaymentController::class, 'callback'])
+Route::get('payment', [PaymentController::class, 'show'])->name('payment.show');
+Route::post('payment/callback', [PaymentController::class, 'callback'])
     ->name('payment.callback');
 
-Route::get('dashboard', [\App\Http\Controllers\DashboardController::class, 'show'])->name('dashboard.show');
+Route::get('dashboard', [DashboardController::class, 'show'])->name('dashboard.show');
