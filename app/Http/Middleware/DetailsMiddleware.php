@@ -17,8 +17,7 @@ class DetailsMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (auth()->user()->details()->exists()) {
-            //TODO: redirect to payment page
-            return $next($request);
+            return redirect()->route('payment.show');
         }
 
         return $next($request);
