@@ -20,7 +20,7 @@
                                 @csrf
 
                                 <div class="field">
-                                    <label for="name" class="label">Email</label>
+                                    <label for="name" class="label">Name</label>
                                     <div class="control has-icons-left">
                                         <input type="text" id="name" name="name" placeholder="My name is..." value="{{ old('name') }}" required @class([
                                             'input',
@@ -47,6 +47,22 @@
                                         @enderror
                                         <span class="icon is-small is-left">
                                             <i class="fas fa-envelope"></i>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="field">
+                                    <label for="phone" class="label">Phone</label>
+                                    <div class="control has-icons-left">
+                                        <input type="tel" id="phone" name="phone" placeholder="98412942024" value="{{ old('phone') }}" required @class([
+                                            'input',
+                                            'is-danger' => $errors->has('phone')
+                                        ])>
+                                        @error('phone')
+                                            <p class="help is-danger">{{ $message }}</p>
+                                        @enderror
+                                        <span class="icon is-small is-left">
+                                            <i class="fas fa-phone"></i>
                                         </span>
                                     </div>
                                 </div>
