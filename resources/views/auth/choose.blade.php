@@ -11,9 +11,9 @@
                         <p class="title">What do you wanna do?</p>
                         <div class="card">
                             <div class="card-content">
-                                <a href="#" class="button is-fullwidth is-justify-content-center is-primary is-outlined">Register</a>
+                                <a href="{{ route('auth.register') }}" class="button is-fullwidth is-justify-content-center is-primary is-outlined">Register</a>
                                 <div class="divider">OR</div>
-                                <a href="#" class="button is-fullwidth is-justify-content-center is-outlined">Login</a>
+                                <a href="{{ route('auth.login') }}" class="button is-fullwidth is-justify-content-center is-outlined">Login</a>
                             </div>
                         </div>
                     </div>
@@ -21,6 +21,4 @@
             </div>
         </div>
     </section>
-
-    <button class="button is-primary is-outlined is-fullwidth" style="justify-content: center">Hello</button>
 @endsection

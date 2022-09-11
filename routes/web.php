@@ -13,4 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'auth.choose');
+Route::get('/', [\App\Http\Controllers\AuthController::class, 'choose'])->name('auth.choose');
+Route::get('login', [\App\Http\Controllers\AuthController::class, 'login'])->name('auth.login');
+Route::get('register', [\App\Http\Controllers\AuthController::class, 'register'])->name('auth.register');
+
+Route::post('register', [\App\Http\Controllers\AuthController::class, 'processRegister']);
