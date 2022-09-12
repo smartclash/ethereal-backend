@@ -2,7 +2,7 @@
     <div class="container">
         <div class="navbar-brand">
             <a class="navbar-item" href="{{ url('/') }}">
-                <img src="https://bulma.io/images/bulma-logo.png" alt="Ethereal, a silver jubilee cultural event at KCG College of Technology" width="112" height="28">
+                <img src="{{ asset('images/ethereal.PNG') }}" alt="Ethereal, a silver jubilee cultural event at KCG College of Technology" width="112" height="28">
             </a>
 
             <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">

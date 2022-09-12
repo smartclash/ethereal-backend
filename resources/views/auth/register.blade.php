@@ -1,8 +1,6 @@
 @extends('layout.app')
 
 @section('content')
-    @include('layout.navbar')
-
     <section class="hero has-background-white-bis is-fullheight-with-navbar">
         <div class="hero-body">
             <div class="container">
