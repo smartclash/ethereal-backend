@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\UserRegistered;
 use App\Services\PaymentGateway;
 
 class PaymentController extends Controller
@@ -34,6 +35,9 @@ class PaymentController extends Controller
             auth()->user()->details->update([
                 'code' => \Str::random(6)
             ]);
+
+            \Mail::to(auth()->user())
+                ->send(new UserRegistered(auth()->user()));
 
             \DB::commit();
             return redirect()->route('dashboard.show');
