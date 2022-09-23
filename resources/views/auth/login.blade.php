@@ -53,7 +53,7 @@
 
                                     <div class="field">
                                         <div class="control">
-                                            <input type="submit" class="button is-primary is-fullwidth is-outlined" value="Login">
+                                            <input type="submit" class="button is-primary is-justify-content-center is-fullwidth is-outlined" value="Login">
                                         </div>
                                     </div>
                                 </form>

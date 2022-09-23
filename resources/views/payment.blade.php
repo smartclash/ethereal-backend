@@ -92,7 +92,7 @@
             "currency": "INR",
             "name": "Ethereal",
             "description": "Event ticket for one participant",
-            "image": "https://example.com/your_logo",
+            "image": "{{ asset('images/ethereal.PNG') }}",
             "order_id": "{{ auth()->user()->razorpay->order }}",
             "callback_url": "{{ route('payment.callback') }}",
             "prefill": {

@@ -83,7 +83,7 @@
 
                                 <div class="field">
                                     <div class="control">
-                                        <input type="submit" class="button is-primary is-fullwidth is-outlined" value="Register">
+                                        <input type="submit" class="button is-justify-content-center is-primary is-fullwidth is-outlined" value="Register">
                                     </div>
                                 </div>
                             </form>

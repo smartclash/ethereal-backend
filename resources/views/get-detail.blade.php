@@ -68,7 +68,7 @@
 
                                     <div class="field">
                                         <div class="control">
-                                            <input type="submit" class="button is-primary is-fullwidth is-outlined" value="Save Details">
+                                            <input type="submit" class="button is-justify-content-center is-primary is-fullwidth is-outlined" value="Save Details">
                                         </div>
                                     </div>
                                 </form>
