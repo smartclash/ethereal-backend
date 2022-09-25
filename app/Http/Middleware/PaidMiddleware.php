@@ -20,6 +20,10 @@ class PaidMiddleware
             return $next($request);
         }
 
+        if (auth()->user()->details()->doesntExist()) {
+            return redirect()->route('details.form');
+        }
+
         return redirect()->route('payment.show');
     }
 }

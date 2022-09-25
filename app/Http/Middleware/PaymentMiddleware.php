@@ -16,7 +16,7 @@ class PaymentMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()->details()->exists()) {
+        if (auth()->user()->details()->doesntExist()) {
             return redirect()->route('details.form');
         }
 
