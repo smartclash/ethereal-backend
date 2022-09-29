@@ -82,6 +82,12 @@
                                 </div>
 
                                 <div class="field">
+                                    <p>
+                                        Already have an account? <a href="{{ route('auth.login') }}">Login here</a>
+                                    </p>
+                                </div>
+
+                                <div class="field">
                                     <div class="control">
                                         <input type="submit" class="button is-justify-content-center is-primary is-fullwidth is-outlined" value="Register">
                                     </div>

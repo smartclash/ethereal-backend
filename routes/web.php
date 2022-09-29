@@ -21,7 +21,11 @@ Route::get('/', [AuthController::class, 'choose'])->name('auth.choose');
 Route::get('login', [AuthController::class, 'login'])->name('auth.login');
 Route::get('register', [AuthController::class, 'register'])->name('auth.register');
 Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
+Route::get('forgot-password', [AuthController::class, 'forgotPassword'])->name('password.request');
+Route::get('reset-password/{token}', [AuthController::class, 'resetPassword'])->name('password.reset');
 
+Route::post('reset-password', [AuthController::class, 'processResetPassword'])->name('password.update');
+Route::post('forgot-password', [AuthController::class, 'processForgotPassword'])->name('password.email');
 Route::post('register', [AuthController::class, 'processRegister']);
 Route::post('login', [AuthController::class, 'processLogin']);
 

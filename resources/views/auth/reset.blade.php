@@ -6,23 +6,15 @@
             <div class="container">
                 <div class="columns">
                     <div class="column is-7 is-offset-3">
-                        @if(session('status'))
-                            <div class="notification is-success">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-                        @error('credentials')
-                            <div class="notification is-danger">
-                                {{ $message }}
-                            </div>
-                        @enderror
                         <div class="card">
                             <div class="card-header">
-                                <div class="card-header-title">Login to access account</div>
+                                <div class="card-header-title">Reset password</div>
                             </div>
                             <div class="card-content">
-                                <form action="{{ route('auth.login') }}" method="post">
+                                <form action="{{ route('password.update') }}" method="post">
                                     @csrf
+
+                                    <input type="hidden" name="token" value="{{ $token }}">
 
                                     <div class="field">
                                         <label for="email" class="label">Email</label>
@@ -32,7 +24,7 @@
                                                 'is-danger' => $errors->has('email')
                                             ])>
                                             @error('email')
-                                                <p class="help is-danger">{{ $message }}</p>
+                                            <p class="help is-danger">{{ $message }}</p>
                                             @enderror
                                             <span class="icon is-small is-left">
                                                 <i class="fas fa-envelope"></i>
@@ -43,7 +35,8 @@
                                     <div class="field">
                                         <label for="password" class="label">Password</label>
                                         <div class="control has-icons-left">
-                                            <input type="password" id="password" name="password" placeholder="Y0uR S3cRe1" required @class([
+                                            <input type="password" id="password" name="password"
+                                                   placeholder="Y0uR S3cRe1" required @class([
                                                 'input',
                                                 'is-danger' => $errors->has('password')
                                             ])>
@@ -57,12 +50,27 @@
                                     </div>
 
                                     <div class="field">
-                                        <a href="{{ route('password.request') }}">Forgot password?</a>
+                                        <label for="password_confirmation" class="label">Repeat Password</label>
+                                        <div class="control has-icons-left">
+                                            <input type="password" id="password_confirmation" name="password_confirmation"
+                                                   placeholder="Y0uR S3cRe1 aGA1N" required @class([
+                                                'input',
+                                                'is-danger' => $errors->has('password_confirmation')
+                                            ])>
+                                            @error('password_confirmation')
+                                                <p class="help is-danger">{{ $message }}</p>
+                                            @enderror
+                                            <span class="icon is-small is-left">
+                                                <i class="fas fa-key"></i>
+                                            </span>
+                                        </div>
                                     </div>
 
                                     <div class="field">
                                         <div class="control">
-                                            <input type="submit" class="button is-primary is-justify-content-center is-fullwidth is-outlined" value="Login">
+                                            <input type="submit"
+                                                   class="button is-primary is-justify-content-center is-fullwidth is-outlined"
+                                                   value="Reset Password">
                                         </div>
                                     </div>
                                 </form>

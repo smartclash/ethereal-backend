@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Auth\ForgotPasswordRequest;
+use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
-use App\Http\Requests\LoginRequest;
+use App\Http\Requests\Auth\ResetPasswordRequest;
 use App\Models\User;
 use App\Services\PaymentGateway;
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Support\Facades\Password;
 
 class AuthController extends Controller
 {
@@ -67,6 +71,49 @@ class AuthController extends Controller
         return redirect()->route('auth.login')->withErrors([
             'password' => 'The password you entered was wrong'
         ]);
+    }
+
+    public function forgotPassword()
+    {
+        return view('auth.forgot');
+    }
+
+    public function processForgotPassword(ForgotPasswordRequest $request)
+    {
+        $status = Password::sendResetLink(
+            $request->only('email')
+        );
+
+        return $status === Password::RESET_LINK_SENT
+            ? back()->with(['status' => __($status)])
+            : back()->withErrors(['email' => __($status)]);
+    }
+
+    public function resetPassword($token)
+    {
+        return view('auth.reset')->with([
+            'token' => $token
+        ]);
+    }
+
+    public function processResetPassword(ResetPasswordRequest $request)
+    {
+        $status = Password::reset(
+            $request->only('email', 'password', 'password_confirmation', 'token'),
+            function (User $user, $password) {
+                $user->forceFill([
+                    'password' => \Hash::make($password)
+                ])->setRememberToken(\Str::random(60));
+
+                $user->save();
+
+                event(new PasswordReset($user));
+            }
+        );
+
+        return $status === Password::PASSWORD_RESET
+            ? redirect()->route('auth.login')->with('status', __($status))
+            : back()->withErrors(['password' => [__($status)]]);
     }
 
     public function logout()
