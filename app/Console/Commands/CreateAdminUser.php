@@ -54,6 +54,6 @@ class CreateAdminUser extends Command
 
         $this->line('User created successfully');
 
-        return 0;
+        return Command::SUCCESS;
     }
 }
