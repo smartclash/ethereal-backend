@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Enums\Role;
+use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
+use Opcodes\LogViewer\Facades\LogViewer;
 use Razorpay\Api\Api;
 
 class AppServiceProvider extends ServiceProvider
@@ -29,6 +32,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        LogViewer::auth(function (Request $request) {
+            return $request->user()
+                && $request->user()->role == Role::ADMIN;
+        });
     }
 }
