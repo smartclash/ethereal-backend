@@ -69,8 +69,8 @@ class SyncRazorpay extends Command
                     'code' => \Str::random(6)
                 ]);
 
-                \Mail::to($unSynced->user->email)
-                    ->send(new UserRegistered($unSynced->user->email));
+                \Mail::to($unSynced->user)
+                    ->send(new UserRegistered($unSynced->user));
 
                 $this->line('Mailed ' . $unSynced->user->name . '(' . $unSynced->user->email . ')');
             }
