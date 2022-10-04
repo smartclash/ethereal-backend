@@ -36,7 +36,7 @@ class SyncRazorpay extends Command
             $rzpResponse = collect(app(Api::class)->order->all([
                 'authorized' => 1,
                 'count' => 100,
-                'skip' => $skip
+                'skip' => $skip * 100
             ]));
             $orders = collect($rzpResponse->get('items'));
 
