@@ -15,7 +15,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('razorpay:sync')
+            ->hourly()
+            ->timezone('Asia/Kolkata');
+
+        $schedule->command('auth:clear-resets')
+            ->everyFifteenMinutes();
     }
 
     /**
