@@ -48,6 +48,7 @@ class SyncRazorpay extends Command
             $skip++;
         }
 
+        $this->info('Successfully synced razorpay data with app data');
         return Command::SUCCESS;
     }
 
@@ -72,7 +73,7 @@ class SyncRazorpay extends Command
                 \Mail::to($unSynced->user)
                     ->send(new UserRegistered($unSynced->user));
 
-                $this->line('Mailed ' . $unSynced->user->name . '(' . $unSynced->user->email . ')');
+                $this->info('Mailed ' . $unSynced->user->name . '(' . $unSynced->user->email . ')');
             }
         });
     }
