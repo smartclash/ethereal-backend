@@ -24,6 +24,10 @@ Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
 Route::get('forgot-password', [AuthController::class, 'forgotPassword'])->name('password.request');
 Route::get('reset-password/{token}', [AuthController::class, 'resetPassword'])->name('password.reset');
 
+Route::get('auth/admin', [AuthController::class, 'adminLogin'])->name('auth.admin');
+Route::get('auth/google', [AuthController::class, 'redirectToGoogle'])->name('auth.google');
+Route::get('callback/google', [AuthController::class, 'handleGoogleCallback'])->name('auth.google.callback');
+
 Route::post('reset-password', [AuthController::class, 'processResetPassword'])->name('password.update');
 Route::post('forgot-password', [AuthController::class, 'processForgotPassword'])->name('password.email');
 Route::post('register', [AuthController::class, 'processRegister']);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Role;
 use App\Http\Requests\Auth\ForgotPasswordRequest;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
@@ -10,6 +11,7 @@ use App\Models\User;
 use App\Services\PaymentGateway;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Password;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
@@ -32,6 +34,11 @@ class AuthController extends Controller
     public function register()
     {
         return view('auth.register');
+    }
+
+    public function adminLogin()
+    {
+        return view('auth.admin');
     }
 
     public function processRegister(RegisterRequest $request)
@@ -121,5 +128,34 @@ class AuthController extends Controller
         auth()->logout();
 
         return redirect()->route('auth.choose');
+    }
+
+    public function redirectToGoogle()
+    {
+        config(['services.google.redirect' => route('auth.google.callback')]);
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function handleGoogleCallback()
+    {
+        config(['services.google.redirect' => route('auth.google.callback')]);
+        $socialite = Socialite::driver('google')->stateless()->user();
+
+        $user = User::whereEmail($socialite->getEmail())->first();
+
+        if (!$user?->exists()) {
+            $user = User::create([
+                'name' => $socialite->getName(),
+                'phone' => fake()->phoneNumber,
+                'email' => $socialite->getEmail(),
+                'password' => \Hash::make(\Str::random(10)),
+                'google_id' => $socialite->getId(),
+                'role' => Role::ADMIN,
+            ]);
+        }
+
+        \Auth::login($user);
+
+        return redirect()->to('logs');
     }
 }
