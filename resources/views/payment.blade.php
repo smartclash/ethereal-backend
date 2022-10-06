@@ -24,6 +24,11 @@
                                     Any volunteer can ask for the <span class="has-text-weight-bold">secret code</span>
                                     to verify your registration details
                                 </p>
+                                <p class="mt-4">
+                                    <span class="has-text-danger">NOTE:</span> If the payment fails and money is
+                                    credited from your account, don't panic. Either you'll be refunded in a day or the
+                                    system will automatically register you in 15 minutes and send you the secret code.
+                                </p>
                                 <div class="divider">Information</div>
                                 <span class="icon-text">
                                     <span class="icon has-text-primary">
