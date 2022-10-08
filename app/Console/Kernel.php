@@ -20,6 +20,9 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('auth:clear-resets')
             ->everyFifteenMinutes();
+
+        $schedule->command('telescope:prune --hours=48')
+            ->daily();
     }
 
     /**
