@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\AdminOnlyMiddleware;
 use App\Http\Middleware\DetailsMiddleware;
 use App\Http\Middleware\PaidMiddleware;
 use App\Http\Middleware\PaymentMiddleware;
@@ -69,5 +70,6 @@ class Kernel extends HttpKernel
         'details' => DetailsMiddleware::class,
         'payment' => PaymentMiddleware::class,
         'paid' => PaidMiddleware::class,
+        'only.admin' => AdminOnlyMiddleware::class,
     ];
 }

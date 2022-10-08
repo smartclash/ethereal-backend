@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PaymentController;
@@ -41,3 +42,7 @@ Route::post('payment/callback', [PaymentController::class, 'callback'])
     ->name('payment.callback');
 
 Route::get('dashboard', [DashboardController::class, 'show'])->name('dashboard.show');
+
+Route::prefix('admin')->group(function () {
+    Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+});

@@ -156,6 +156,6 @@ class AuthController extends Controller
 
         \Auth::login($user);
 
-        return redirect()->to('logs');
+        return redirect()->route('admin.dashboard');
     }
 }
