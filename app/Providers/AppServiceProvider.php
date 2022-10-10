@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Enums\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 use Opcodes\LogViewer\Facades\LogViewer;
@@ -35,6 +36,11 @@ class AppServiceProvider extends ServiceProvider
         LogViewer::auth(function (Request $request) {
             return $request->user()
                 && $request->user()->role == Role::ADMIN;
+        });
+
+        \Gate::define('event-register', function (User $user) {
+            return $user->razorpay->paid &&
+                $user->details->passing >= 2022;
         });
     }
 }
