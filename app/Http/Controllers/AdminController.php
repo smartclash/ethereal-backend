@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Enums\Role;
+use App\Exports\UsersExport;
+use App\Http\Requests\Admin\ExportRequest;
 use App\Models\User;
+use Maatwebsite\Excel\Excel;
 
 class AdminController extends Controller
 {
@@ -33,5 +36,13 @@ class AdminController extends Controller
             'kcgRegistrants' => $kcgRegistrants,
             'paidKcgRegistrants' => $paidKcgRegistrants,
         ]);
+    }
+
+    public function export(ExportRequest $request, Excel $excel)
+    {
+        return $excel->download(new UsersExport(
+            $request->get('paid'),
+            $request->get('kcg')
+        ), 'users.xlsx');
     }
 }

@@ -45,4 +45,5 @@ Route::get('dashboard', [DashboardController::class, 'show'])->name('dashboard.s
 
 Route::prefix('admin')->group(function () {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('export', [AdminController::class, 'export'])->name('admin.export');
 });
