@@ -35,7 +35,7 @@
                                         <i class="fas fa-check"></i>
                                     </span>
                                     <span>
-                                        Each participant has to pay 255₹ for entry
+                                        Each participant has to pay 300₹ for entry
                                     </span>
                                 </span>
                                 <span class="icon-text mt-4">
@@ -78,7 +78,7 @@
                                         No refunds will be processed for any reason
                                     </span>
                                 </span>
-                                <button id="razorpay-button" class="mt-5 button is-primary is-fullwidth is-justify-content-center">Pay 255₹</button>
+                                <button id="razorpay-button" class="mt-5 button is-primary is-fullwidth is-justify-content-center">Pay 300₹</button>
                             </div>
                         </div>
                     </div>
