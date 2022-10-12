@@ -6,7 +6,6 @@ use App\Enums\Role;
 use App\Exports\UsersExport;
 use App\Http\Requests\Admin\ExportRequest;
 use App\Models\User;
-use Maatwebsite\Excel\Excel;
 
 class AdminController extends Controller
 {
@@ -38,11 +37,16 @@ class AdminController extends Controller
         ]);
     }
 
+    public function exportPage()
+    {
+        return view('admin.export');
+    }
+
     public function export(ExportRequest $request)
     {
         return (new UsersExport(
-            $request->get('paid', false),
-            $request->get('kcg', false)
+            $request->boolean('paid'),
+            $request->boolean('kcg')
         ))->download('users.xlsx');
     }
 }
