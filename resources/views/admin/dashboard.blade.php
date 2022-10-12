@@ -76,11 +76,14 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="columns">
-                                    <div class="column is-half">
+                                    <div class="column is-4">
                                         <a href="{{ route('blv.index') }}" target="_blank" class="button is-justify-content-center is-primary is-fullwidth is-outlined">Logs</a>
                                     </div>
-                                    <div class="column is-half">
-                                        <a href="{{ route('telescope') }}" target="_blank" class="button is-justify-content-center is-primary is-fullwidth is-outlined">System Telescope</a>
+                                    <div class="column is-4">
+                                        <a href="{{ route('telescope') }}" target="_blank" class="button is-justify-content-center is-primary is-fullwidth is-outlined">Telescope</a>
+                                    </div>
+                                    <div class="column is-4">
+                                        <a href="{{ route('admin.excel.export') }}" target="_blank" class="button is-justify-content-center is-primary is-fullwidth is-outlined">Exporter</a>
                                     </div>
                                 </div>
                             </div>

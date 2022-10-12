@@ -13,16 +13,32 @@
         </div>
         <div class="navbar-menu" id="navMenu">
             <div class="navbar-end">
-                <a class="navbar-item" href="{{ route('dashboard.show') }}">
-                    Dashboard
-                </a>
                 @auth
+                    @if(auth()->user()->role == \App\Enums\Role::ADMIN)
+                        <a class="navbar-item" href="{{ route('admin.dashboard') }}">
+                            Dashboard
+                        </a>
+                    @else
+                        <a class="navbar-item" href="{{ route('dashboard.show') }}">
+                            Dashboard
+                        </a>
+                    @endif
                     <a class="navbar-item" href="{{ route('auth.logout') }}">
                         <button
                             class="button is-danger is-outlined"
                         >Logout</button>
                     </a>
-                @endauth
+                @else
+                    <a class="navbar-item" href="{{ route('auth.admin') }}">
+                        Admin
+                    </a>
+                    <a class="navbar-item" href="{{ route('auth.register') }}">
+                        <strong>Sign up</strong>
+                    </a>
+                    <a class="navbar-item" href="{{ route('auth.login') }}">
+                        Log in
+                    </a>
+                @endif
             </div>
         </div>
     </div>

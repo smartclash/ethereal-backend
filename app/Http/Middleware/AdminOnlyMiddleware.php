@@ -21,6 +21,6 @@ class AdminOnlyMiddleware
             return $next($request);
         }
 
-        return redirect()->route('auth.login');
+        return redirect()->route('auth.admin');
     }
 }
