@@ -53,6 +53,7 @@ class UsersExport implements FromQuery, ShouldAutoSize, WithHeadings, WithMappin
         return User::query()
             ->select(['id', 'name', 'email', 'phone', 'role'])
             ->where('role', Role::PARTICIPANT)
+            ->whereHas('details')
             ->with(['details:user_id,college,course,passing', 'razorpay:user_id,paid'])
             ->when($this->paid, fn (Builder $builder) =>
                 $builder->whereRelation('razorpay', 'paid', $this->paid)
