@@ -4,9 +4,39 @@
     <section class="hero has-background-white-bis is-fullheight-with-navbar">
         <div class="hero-body">
             <div class="container">
-                <div class="columns is-multiline">
+                <div class="columns">
                     <div class="column is-7 is-offset-3">
                         <p class="title">Welcome, Admin</p>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column is-3">
+                        <div class="box">
+                            <p class="is-size-3 has-text-weight-bold">{{ $registrants }}</p>
+                            <p class="is-size-5">Registrants</p>
+                        </div>
+                    </div>
+                    <div class="column is-3">
+                        <div class="box">
+                            <p class="is-size-3 has-text-weight-bold">{{ $paidRegistrants }}</p>
+                            <p class="is-size-5">Paid Registrants</p>
+                        </div>
+                    </div>
+                    <div class="column is-3">
+                        <div class="box">
+                            <p class="is-size-3 has-text-weight-bold">{{ $kcgRegistrants }}</p>
+                            <p class="is-size-5">KCG Registrants</p>
+                        </div>
+                    </div>
+                    <div class="column is-3">
+                        <div class="box">
+                            <p class="is-size-3 has-text-weight-bold">{{ $paidKcgRegistrants }}</p>
+                            <p class="is-size-5">Paid KCG Registrants</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns is-multiline">
+                    <div class="column is-7 is-offset-3">
                         <div class="card mt-4">
                             <div class="card-header">
                                 <p class="card-header-title">
