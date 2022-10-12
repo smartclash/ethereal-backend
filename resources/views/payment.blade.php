@@ -44,6 +44,7 @@
                                     </span>
                                     <span>
                                         You're allowed only if you are currently a student at an accredited university
+                                        or Alumni of KCG College
                                     </span>
                                 </span>
                                 <span class="icon-text mt-4">
@@ -51,7 +52,8 @@
                                         <i class="fas fa-check"></i>
                                     </span>
                                     <span>
-                                        Your college ID must be submitted for verification during entry
+                                        Your college ID must be submitted for verification during entry. Alumni can
+                                        just show their secret code.
                                     </span>
                                 </span>
                                 <span class="icon-text mt-4">
@@ -67,7 +69,8 @@
                                         <i class="fas fa-close"></i>
                                     </span>
                                     <span>
-                                        Entry without college ID card won't be allowed.
+                                        Entry without college ID card won't be allowed. Alumni can
+                                        just show their secret code.
                                     </span>
                                 </span>
                                 <span class="icon-text mt-4">
@@ -75,7 +78,8 @@
                                         <i class="fas fa-close"></i>
                                     </span>
                                     <span>
-                                        No refunds will be processed for any reason
+                                        No refunds will be processed for any reason unless an event is cancelled and
+                                        the participant doesn't want to participate in any other event.
                                     </span>
                                 </span>
                                 <button id="razorpay-button" class="mt-5 button is-primary is-fullwidth is-justify-content-center">Pay 300₹</button>
