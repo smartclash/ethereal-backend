@@ -41,8 +41,8 @@ class AdminController extends Controller
     public function export(ExportRequest $request, Excel $excel)
     {
         return $excel->download(new UsersExport(
-            $request->get('paid'),
-            $request->get('kcg')
+            $request->get('paid', false),
+            $request->get('kcg', false)
         ), 'users.xlsx');
     }
 }
