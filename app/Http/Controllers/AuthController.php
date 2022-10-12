@@ -146,7 +146,7 @@ class AuthController extends Controller
         if (!$user?->exists()) {
             $user = User::create([
                 'name' => $socialite->getName(),
-                'phone' => fake()->phoneNumber,
+                'phone' => substr(str_shuffle("0123456789"), 0, 10),
                 'email' => $socialite->getEmail(),
                 'password' => \Hash::make(\Str::random(10)),
                 'google_id' => $socialite->getId(),
