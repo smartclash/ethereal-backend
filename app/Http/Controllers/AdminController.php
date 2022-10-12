@@ -38,11 +38,11 @@ class AdminController extends Controller
         ]);
     }
 
-    public function export(ExportRequest $request, Excel $excel)
+    public function export(ExportRequest $request)
     {
-        return $excel->download(new UsersExport(
+        return (new UsersExport(
             $request->get('paid', false),
             $request->get('kcg', false)
-        ), 'users.xlsx');
+        ))->download('users.xlsx');
     }
 }
