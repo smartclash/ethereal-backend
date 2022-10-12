@@ -19,7 +19,7 @@ class PaymentGateway
     {
         return app(Api::class)->order->create([
             'receipt' => \Str::uuid(),
-            'amount' => 25500,
+            'amount' => 30000,
             'currency' => 'INR',
         ]);
     }

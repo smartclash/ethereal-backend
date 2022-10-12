@@ -93,7 +93,7 @@
     <script>
         let options = {
             "key": "{{ config('services.razorpay.key') }}",
-            "amount": "25500",
+            "amount": "30000",
             "currency": "INR",
             "name": "Ethereal",
             "description": "Event ticket for one participant",
@@ -104,11 +104,6 @@
                 "name": "{{ auth()->user()->name }}",
                 "email": "{{ auth()->user()->email }}",
                 "contact": "{{ auth()->user()->phone }}"
-            },
-            "readonly": {
-                "name": true,
-                "email": true,
-                "contact": true
             },
             "customer_id": "{{ auth()->user()->razorpay->customer }}",
             "theme": {
