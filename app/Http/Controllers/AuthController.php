@@ -33,6 +33,8 @@ class AuthController extends Controller
 
     public function register()
     {
+        return redirect()->route('closed');
+
         return view('auth.register');
     }
 

@@ -13,6 +13,8 @@ class UserDetailsController extends Controller
 
     public function showForm()
     {
+        return redirect()->route('closed');
+
         return view('get-detail');
     }
 

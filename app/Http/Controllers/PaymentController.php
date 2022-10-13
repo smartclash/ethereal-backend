@@ -14,6 +14,8 @@ class PaymentController extends Controller
 
     public function show()
     {
+        return redirect()->route('closed');
+
         return view('payment');
     }
 

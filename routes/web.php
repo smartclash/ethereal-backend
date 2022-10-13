@@ -42,6 +42,7 @@ Route::post('payment/callback', [PaymentController::class, 'callback'])
     ->name('payment.callback');
 
 Route::get('dashboard', [DashboardController::class, 'show'])->name('dashboard.show');
+Route::view('closed', 'closed')->name('closed');
 
 Route::prefix('admin')->group(function () {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
