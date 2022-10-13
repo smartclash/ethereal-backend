@@ -26,7 +26,7 @@ class UserDetailRequest extends FormRequest
         return [
             'college' => ['required', 'string'],
             'course' => ['required', 'string'],
-            'passing' => ['required', 'numeric', 'min:2022', 'max:2027']
+            'passing' => ['required', 'numeric']
         ];
     }
 }
