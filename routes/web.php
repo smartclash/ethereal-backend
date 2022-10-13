@@ -48,4 +48,5 @@ Route::prefix('admin')->group(function () {
     Route::get('export', [AdminController::class, 'exportPage'])->name('admin.excel.export');
 
     Route::post('export', [AdminController::class, 'export']);
+    Route::post('verify', [AdminController::class, 'verifyCode'])->name('admin.code.verify');
 });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\Role;
 use App\Exports\UsersExport;
 use App\Http\Requests\Admin\ExportRequest;
+use App\Http\Requests\Admin\VerifyCodeRequest;
 use App\Models\User;
 
 class AdminController extends Controller
@@ -48,5 +49,10 @@ class AdminController extends Controller
             $request->boolean('paid'),
             $request->boolean('kcg')
         ))->download('users.xlsx');
+    }
+
+    public function verifyCode(VerifyCodeRequest $request)
+    {
+        return $request->all();
     }
 }
